@@ -11,6 +11,17 @@ function lu.each (t, func)
 	end
 end
 
+function lu.filter (t, func)
+	local r = {}
+	_.each(t, function (val, key, object)
+		if func(val, key, object) then
+			r[key] = value
+		end
+	end)
+
+	return r
+end
+
 function lu.isArray (val)
 	return type(val) == 'table' and (val[1] or next(val) == nil)
 end
