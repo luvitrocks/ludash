@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install luvit-oauth
+npm install ludash
 ```
 
 If you're not familiar with npm check this out:
