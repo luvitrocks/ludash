@@ -14,21 +14,20 @@ end
 
 function lu.map (t, func)
 	local r = {}
-	for key, value in pairs(t) do
-		r[key] = func(key, value, t)
-	end
-	return _t
+	lu.each(t, function (val, index)
+		local newVal = func(val, index, t)
+		table.insert(r, newVal)
+	end)
+	return r
 end
 
 function lu.filter (t, func)
 	local r = {}
-
 	lu.each(t, function (val, key, object)
 		if func(val, key, object) then
 			table.insert(r, val)
 		end
 	end)
-
 	return r
 end
 
