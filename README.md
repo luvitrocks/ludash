@@ -27,14 +27,15 @@ local people = {
 	{ title = 'Aurora', age = 24 }
 }
 
-local function youngPeople (human, index)
+local function youngerPeople (human)
 	if human.age == 24 then return human end
 end
 
-local results = _.chain(people).sortBy('title').filter(youngPeople).value()
+local results = _.chain(people).sortBy('title').filter(youngerPeople).value()
+
 p(results)
--- will output new table
--- { { title = 'Aurora', age = 24 }, { title = 'Robert', age = 24 } }
+-- will output new table:
+-- { {title = 'Aurora', age = 24}, {title = 'Robert', age = 24} }
 ```
 
 ## Documentation
