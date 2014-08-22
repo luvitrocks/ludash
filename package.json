@@ -1,0 +1,17 @@
+{
+	"name": "ludash",
+	"version": "0.1.0-pre",
+	"description": "lλdash - luvit.io functional programming helper library",
+	"main": "init.lua",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/luvitrocks/ludash.git"
+	},
+	"keywords": ["luvit", "underscore", "functional", "lodash", "lua", "utilities"],
+	"author": "Dmitri Voronianski <dmitri.voronianski@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/luvitrocks/ludash/issues"
+	},
+	"homepage": "https://github.com/luvitrocks/ludash"
+}
