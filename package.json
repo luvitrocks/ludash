@@ -3,6 +3,9 @@
   "version": "0.1.0-pre",
   "description": "lλdash - luvit.io functional programming helper library",
   "main": "init.lua",
+  "scripts": {
+    "test": "luvit test/init.lua"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/luvitrocks/ludash.git"

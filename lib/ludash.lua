@@ -1,4 +1,5 @@
 local table = require('table')
+local string = require('string')
 
 local lu = {}
 
@@ -11,11 +12,20 @@ function lu.each (t, func)
 	end
 end
 
+function lu.map (t, func)
+	local r = {}
+	for key, value in pairs(t) do
+		r[key] = func(key, value, t)
+	end
+	return _t
+end
+
 function lu.filter (t, func)
 	local r = {}
-	_.each(t, function (val, key, object)
+
+	lu.each(t, function (val, key, object)
 		if func(val, key, object) then
-			r[key] = value
+			table.insert(r, val)
 		end
 	end)
 
