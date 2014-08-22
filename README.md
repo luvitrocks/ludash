@@ -15,6 +15,28 @@ If you're not familiar with npm check this out:
 - https://github.com/voronianski/luvit-npm-example#how-to
 - https://github.com/luvitrocks/luvit-module-boilerplate#whats-npm
 
+## Example
+
+```lua
+local _ = require('ludash')
+
+local people = {
+	{ title = 'Robert', age = 24 },
+	{ title = 'Simona', age = 29 },
+	{ title = 'Jekyll', age = 26 },
+	{ title = 'Aurora', age = 24 }
+}
+
+local function youngPeople (human, index)
+	if human.age == 24 then return human end
+end
+
+local results = _.chain(people).sortBy('title').filter(youngPeople).value()
+p(results)
+-- will output new table
+-- { { title = 'Aurora', age = 24 }, { title = 'Robert', age = 24 } }
+```
+
 ## Documentation
 
 ## License
