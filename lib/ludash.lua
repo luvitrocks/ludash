@@ -61,6 +61,24 @@ function lu.filter (t, func)
 	return _r
 end
 
+function lu.size(list, ...)
+	local args = {...}
+
+	if not lu.isEmpty(args) then
+		return lu.size(args) + 1
+	elseif lu.isArray(list) then
+		return #list
+	elseif lu.isObject(list) then
+		local _l = 0
+		lu.each(list, function () _l = _l + 1 end)
+		return _l
+	elseif lu.isString(list) then
+		return list:len()
+	end
+
+	return 0
+end
+
 --
 -- Objects
 --
@@ -90,6 +108,51 @@ end
 
 function lu.isNil (val)
 	return val == nil
+end
+
+function lu.isEmpty (val)
+	if lu.isNil(val) then
+		return true
+	elseif lu.isArray(val) or lu.isObject(val) then
+		return next(val) == nil
+	elseif lu.isString(val) then
+		return val:len() == 0
+	else
+		return false
+	end
+
+	return true
+end
+
+function lu.isEqual (objA, objB, useMt)
+	local typeObjA = type(objA)
+	local typeObjB = type(objB)
+
+	if typeObjA ~= typeObjB then return false end
+	if typeObjA ~= 'table' then return (objA == objB) end
+
+	local mtA = getmetatable(objA)
+	local mtB = getmetatable(objB)
+
+	if useMt then
+		if (mtA or mtB) and (mtA.__eq or mtB.__eq) then
+			return mtA.__eq(objA, objB) or mtB.__eq(objB, objA) or (objA == objB)
+		end
+	end
+
+	if lu.size(objA) ~= lu.size(objB) then return false end
+
+	for i, v1 in pairs(objA) do
+		local v2 = objB[i]
+		if lu.isNil(v2) or not lu.isEqual(v1,v2,useMt) then return false end
+	end
+
+	for i, v1 in pairs(objB) do
+		local v2 = objA[i]
+		if lu.isNil(v2) then return false end
+	end
+
+	return true
 end
 
 --
