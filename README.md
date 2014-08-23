@@ -31,7 +31,7 @@ local function twentyFour (human)
 	if human.age == 24 then return human end
 end
 
-local results = _.chain(people).filter(twentyFour).sortBy('name').value()
+local results = _.chain(people):filter(twentyFour):sortBy('name'):value()
 
 p(results)
 -- will output new table:
