@@ -162,5 +162,6 @@ lu.isTable = lu.isObject
 lu.forEach = lu.each
 lu.collect = lu.map
 lu.select = lu.filter
+lu.compare = lu.isEqual
 
 return lu
