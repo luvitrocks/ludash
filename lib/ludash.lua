@@ -5,11 +5,12 @@ local lu = {}
 
 --
 -- Colections
--- http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops
 --
 function lu.each (t, func)
+	-- http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops
 	if lu.isArray(t) then
 		local tl = #t
+
 		for i = 1, tl do
 			func(t[i], i, t)
 		end
@@ -18,68 +19,45 @@ function lu.each (t, func)
 			func(v, k, t)
 		end
 	end
-
-	-- local pairing = pairs
-	-- if lu.isArray(t) then pairing = ipairs end
-
-	-- for key, val in pairing(t) do
-	-- 	func(val, key, t)
-	-- end
 end
 
 function lu.map (t, func)
 	local _r = {}
+	local _i = 1
 
-	if lu.isArray(t) then
-		local _i = 1
-		local tl = #t
-
-		for i = 1, tl do
-			local val = func(t[i], i, t)
+	lu.each(t, function (v, k)
+		if lu.isArray(t) then
+			local val = func(v, k, t)
 			if val then
-				_r[_i] = val
+				_r[k] = val
 				_i = _i + 1
 			end
-		end
-	else
-		for k, v in pairs(t) do
+		else
 			local val = func(v, k, t)
 			table.insert(_r, val)
 		end
-	end
-	-- lu.each(t, function (val, index)
-	-- 	local newVal = func(val, index, t)
-	-- 	table.insert(r, newVal)
-	-- end)
+	end)
+
 	return _r
 end
 
 function lu.filter (t, func)
 	local _r = {}
+	local _i = 1
 
-	if lu.isArray(t) then
-		local _i = 1
-		local tl = #t
-
-		for i = 1, tl do
-			if func(t[i], i, t) then
-				_r[_i] = t[i]
+	lu.each(t, function (v, k)
+		if lu.isArray(t) then
+			if func(v, k, t) then
+				_r[_i] = v
 				_i = _i + 1
 			end
-		end
-	else
-		for k, v in pairs(t) do
+		else
 			if func(v, k, t) then
 				table.insert(_r, v)
 			end
 		end
-	end
+	end)
 
-	-- lu.each(t, function (val, key, object)
-	-- 	if func(val, key, object) then
-	-- 		table.insert(r, val)
-	-- 	end
-	-- end)
 	return _r
 end
 
