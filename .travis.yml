@@ -10,7 +10,7 @@ before_install:
   - cd ../
   - npm install
 
-script: "./build/luvit ./test"
+script: "./luvit/build/luvit ./test"
 
 env:
   global:
