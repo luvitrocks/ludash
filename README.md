@@ -50,7 +50,7 @@ The list of functions available inside _ludash_ can be classified into such cate
 
 **Collection functions** are mostly meant for Lua tables which contains both an array-part and/or a map-part. **Array functions** meant for array lists or sequences. **Object functions** are meant for instances/classes. Also _ludash_ provides a bunch of helpful **utility methods** and **chaining** support.
 
-The HTML version of this doc is available on - http://luvitrocks.github.io/ludash.
+The HTML version of this doc is available at http://luvitrocks.github.io/ludash.
 
 ## <a name="collections">Collection functions (Arrays or Objects)</a>
 
@@ -58,9 +58,31 @@ The HTML version of this doc is available on - http://luvitrocks.github.io/ludas
 
 _Alias: `forEach`_
 
+Iterates over a **table** of elements, yielding each in turn to an **iterator** function. Each invocation of **iterator** is called with three arguments: `(element, index, list)`. If list is a Lua map-like object, iterator's arguments will be `(value, key, list)`.
+
+```lua
+_.each({1, 2, 3}, print)
+-- => prints each number in turn:
+-- => 1 1
+-- => 2 2
+-- => 3 3
+
+_.each({one=1, two=2, three=3}, function(num, key) print(num) end)
+-- => prints each number in turn:
+-- => one 1
+-- => two 2
+-- => three 3
+```
+
+Also attention is paid to performance, so `pairs`, `ipairs` and `table.insert` are not used for lists providing higher execution speed. Based on benchmarks [http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops](http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops).
+
 ### map(table, iterator)
 
 _Alias: `collect`_
+
+### filter(table, iterator)
+
+_Alias: `select`_
 
 **[[⇧]](#documentation)**
 
