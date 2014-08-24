@@ -74,11 +74,20 @@ _.each({one=1, two=2, three=3}, function(num, key) print(num) end)
 -- => three 3
 ```
 
-Also attention is paid to performance, so `pairs`, `ipairs` and `table.insert` are not used for lists providing higher execution speed. Based on benchmarks [http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops](http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops).
+Also attention is paid to performance, so `pairs`, `ipairs` and `table.insert` are not used for lists providing higher execution speed. Based on [Lua perf benchmarks](http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops).
 
 ### map(table, iterator)
 
 _Alias: `collect`_
+
+Produces a new array of values by mapping each value in **table** through a transformation function (**iterator**). If list is a Lua map-like object, **iterator**'s arguments will be `(value, key, list)`.
+
+```lua
+_.map({1, 2, 3}, function (num) return num * 3 end)
+-- => {3, 6, 9}
+_.map({one=1, two=2, three=3}, function(num, key) return num * 3 end)
+-- => {3, 6, 9}
+```
 
 ### filter(table, iterator)
 
