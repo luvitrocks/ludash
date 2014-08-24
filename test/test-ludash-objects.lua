@@ -12,6 +12,7 @@ assert(_.isEmpty({a = 1, b = 2}) == false)
 local arr = {1, 2, 3}
 local hash =  {a = 1, b = 2}
 local deep = {arr = arr, obj = hash}
+assert(_.isEqual(true, false) == false)
 assert(_.isEqual(arr, hash) == false)
 assert(_.isEqual(arr, {1, 2, 3}) == true)
 assert(_.isEqual(deep, {arr = arr, obj = hash}) == true)

@@ -75,7 +75,7 @@ _.each({one=1, two=2, three=3}, function(num, key) print(num) end)
 -- => three 3
 ```
 
-Also attention is paid to performance, so `pairs`, `ipairs` and `table.insert` are not used for lists providing higher execution speed. Based on [Lua perf benchmarks](http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops).
+Also attention is paid to performance, so `pairs`, `ipairs` and `table.insert` are **not** used for lists providing higher execution speed. Based on [Lua perf benchmarks](http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops).
 
 ### map(table, iterator)
 
@@ -124,6 +124,103 @@ _.size('a', 'b', {}, function () end) -- => 4
 
 
 ## <a name="objects">Object functions</a>
+
+### isEqual(table1, table2, useMetaTableFlag)
+
+_Alias: `compare`_
+
+Performs a deep comparison between the two objects, to determine if they should be considered equal. It can compare strings, functions, nil, booleans. Compares tables by reference or by values. If optional `useMetaTableFlag` boolean is passed (default `false`), the equality operator `==` will be used if one of the given objects has a metatable implementing `__eq`.
+
+```lua
+_.isEqual(1, 1) -- => true
+_.isEqual(true, false) -- => false
+_.isEqual(3.14, math.pi) -- => false
+_.isEqual({3,4,5}, {3,4,{5}}) -- => false
+```
+
+### isEmpty(object)
+
+Returns `true` if object contains no values.
+
+```lua
+_.isEmpty('') -- => true
+_.isEmpty({})  -- => true
+_.isEmpty({1, 2, 3}) -- => false
+```
+
+### isArray(object)
+
+Returns `true` if object is an Array (i.e. a sequence).
+
+```lua
+_.isArray({}) -- => true
+_.isArray({1, 2, 3}) -- => true
+_.isArray({'a', 'b', 'c'}) -- => true
+```
+
+### isObject(object)
+
+_Alias: `isTable`_
+
+Returns `true` if object is an actual Object (i.e a Table).
+
+```lua
+_.isTable({}) -- => true
+_.isTable(math) -- => true
+_.isTable(string) -- => true
+```
+
+### isFunction(object)
+
+Returns `true` if object is a Function.
+
+```lua
+_.isFunction(print) -- => true
+_.isFunction(function () end) -- => true
+_.isFunction({}) -- => false
+```
+
+### isString(object)
+
+Returns `true` if object is a String.
+
+```lua
+_.isString('') -- => true
+_.isString('Hello') -- => false
+_.isString({}) -- => false
+```
+
+### isNumber(object)
+
+Returns `true` if object is a Number.
+
+```lua
+_.isNumber(math.pi) -- => true
+_.isNumber(math.huge) -- => true
+_.isNumber(0/0) -- => true
+_.isNumber() -- => false
+```
+
+### isBoolean(object)
+
+Returns `true` if object is either `true` or `false`.
+
+```lua
+_.isBoolean(true) -- => true
+_.isBoolean(false) -- => true
+_.isBoolean(1 == 1) -- => true
+_.isBoolean(print) -- => false
+```
+
+### isNil(object)
+
+Returns `true` if the value of object is `nil`.
+
+```lua
+_.isNil() -- => true
+_.isNil(nil) -- => true
+_.isNil({}) -- => false
+```
 
 **[[⇧]](#documentation)**
 
