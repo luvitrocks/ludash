@@ -4,9 +4,13 @@ node_js:
   - "0.10"
 
 before_install:
-    - git clone https://github.com/luvit/luvit.git --recursive
-    - cd luvit
-    - make
+  - git clone https://github.com/luvit/luvit.git --recursive
+  - cd luvit
+  - make
+  - cd ../
+  - npm install
+
+script: "./build/luvit ./test"
 
 env:
   global:
