@@ -28,7 +28,7 @@ local people = {
 }
 
 local function twentyFour (human)
-	if human.age == 24 then return human end
+	return human.age == 24
 end
 
 local results = _.chain(people):filter(twentyFour):sortBy('name'):value()
