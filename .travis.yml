@@ -8,7 +8,6 @@ before_install:
   - cd luvit
   - make
   - cd ../
-  - npm install
 
 script: "./luvit/build/luvit ./test/init.lua"
 
