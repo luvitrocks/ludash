@@ -60,14 +60,12 @@ function lu.filter (t, func)
 	return _r
 end
 
-function lu.contains (t, val)
-
-end
-
 function lu.some (t, func)
 	if lu.isEmpty(t) then return false end
 
 	func = func or lu.identity
+
+	if not func then return false end
 
 	local found = false
 	lu.each(t, function (v, k, l)
@@ -78,6 +76,12 @@ function lu.some (t, func)
 	end)
 
 	return found
+end
+
+function lu.contains (t, val)
+	return lu.some(t, function (v)
+		return v == val
+	end)
 end
 
 function lu.size(list, ...)
@@ -123,6 +127,10 @@ end
 
 function lu.isBoolean (val)
 	return type(val) == 'boolean'
+end
+
+function lu.toBoolean (val)
+	return not not val
 end
 
 function lu.isNil (val)

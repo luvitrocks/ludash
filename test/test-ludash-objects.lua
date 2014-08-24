@@ -18,3 +18,12 @@ assert(_.isEqual(arr, {1, 2, 3}) == true)
 assert(_.isEqual(deep, {arr = arr, obj = hash}) == true)
 assert(_.isEqual('text1', 'text1') == true)
 assert(_.isEqual('text1', 'text2') == false)
+
+-- toBoolean
+assert(_.toBoolean(true) == true)
+assert(_.toBoolean(false) == false)
+assert(_.toBoolean({}) == true)
+assert(_.toBoolean(nil) == false)
+assert(_.toBoolean('') == true)
+assert(_.toBoolean(1) == true)
+assert(_.toBoolean(0) == true)

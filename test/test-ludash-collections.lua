@@ -85,9 +85,18 @@ end)
 local hasUpper = _.some({'a', 'B', 'c'}, function (letter)
 	return letter:upper() == letter
 end)
+local empty = _.some({1, 2, 3})
 assert(found == true)
 assert(notFound == false)
 assert(hasUpper == true)
+assert(empty == false)
+
+-- contains
+assert(_.contains({1, 2, 3}, 3) == true)
+assert(_.contains({1, 2, 3}, 5) == false)
+assert(_.contains({a=1, b=2}, 2) == true)
+assert(_.contains({a='foo', b='bar'}, 'bar') == true)
+assert(_.contains({a='foo', b='bar'}, 'dodo') == false)
 
 -- size
 assert(_.size() == 0)

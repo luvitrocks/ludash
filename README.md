@@ -109,6 +109,7 @@ Returns `true` if the **value** is present in the **table**.
 
 ```lua
 _.contains({6, 8, 10, 16}, 8) -- => true
+_.contains({a='foo', b='bar'}, 'bar') -- => true
 _.contains({nil, true, 0, true, true}, false) -- => false
 ```
 
@@ -119,9 +120,7 @@ _Alias: `any`_
 Returns `true` if any of the values in the **table** pass the **predicate** truth test. Stops traversing the table if a `true` element is found.
 
 ```lua
-local function isUpper (value) 
-	return value:upper() == value 
-end
+local function isUpper (value) return value:upper() == value end
 _.some({'a', 'B', 'c'}, isUpper) -- => true
 ```
 
@@ -235,6 +234,18 @@ _.isBoolean(true) -- => true
 _.isBoolean(false) -- => true
 _.isBoolean(1 == 1) -- => true
 _.isBoolean(print) -- => false
+```
+
+### toBoolean(object)
+
+Converts any given object to a Boolean.
+
+```lua
+_.toBoolean(true) -- => true
+_.toBoolean(false) -- => false
+_.toBoolean(nil) -- => false
+_.toBoolean({}) -- => true
+_.toBoolean(1) -- => true
 ```
 
 ### isNil(object)
