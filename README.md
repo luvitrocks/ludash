@@ -1,6 +1,7 @@
 # lλdash
 
 [![NPM version](https://badge.fury.io/js/ludash.svg)](http://badge.fury.io/js/ludash)
+[![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
 
 [Luvit.io](http://luvit.io) utility-belt library for functional programming. Provides support for the usual functional suspects (each, map, reduce, filter...) without extending Lua core objects.
 
@@ -85,7 +86,7 @@ Produces a new array of values by mapping each value in **table** through a tran
 ```lua
 _.map({1, 2, 3}, function (num) return num * 3 end)
 -- => {3, 6, 9}
-_.map({one=1, two=2, three=3}, function(num, key) return num * 3 end)
+_.map({one=1, two=2, three=3}, function (num) return num * 3 end)
 -- => {3, 6, 9}
 ```
 
