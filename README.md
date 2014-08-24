@@ -40,6 +40,28 @@ p(results)
 
 ## Documentation
 
+The list of available functions classified into categories:
+
+* [Collection functions](#collections)
+* [Array functions](#arrays)
+* [Object functions](#objects)
+* [Utility functions](#utilities)
+* [Chaining](#chaining)
+
+## <a name="collections">Collection functions (Arrays or Objects)</a>
+
+**[[⇧]](#documentation)**
+
+## <a name="arrays">Array functions</a>
+
+## <a name="objects">Object functions</a>
+
+## <a name="utilities">Utility functions</a>
+
+## <a name="chaining">Chaining</a>
+
+## References
+
 ## License
 
 MIT Licensed

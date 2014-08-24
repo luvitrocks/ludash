@@ -4,7 +4,7 @@ local string = require('string')
 local lu = {}
 
 --
--- Colections
+-- Colections (Tables)
 --
 function lu.each (t, func)
 	-- http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops
