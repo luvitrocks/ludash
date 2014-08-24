@@ -94,6 +94,28 @@ _.map({one=1, two=2, three=3}, function (num) return num * 3 end)
 
 _Alias: `select`_
 
+Looks through each value in the **table**, returning an array of all the values that pass a truth test (**iterator**).
+
+```lua
+_.filter({1, 2, 3, 4, 5, 6}, function (num) return num % 2 == 0 end)
+-- => {2, 4, 6}
+```
+### size(...)
+
+When given a table, provides the count for the very number of values in that table.
+
+```lua
+_.size({1, 2, 3}) -- => 3
+_.size({one=1, two=2}) -- => 2
+```
+
+When given a list of arguments, returns the count of these arguments.
+
+```lua
+_.size(1, 2, 3) -- => 3
+_.size('a', 'b', {}, function () end) -- => 4
+```
+
 **[[⇧]](#documentation)**
 
 ## <a name="arrays">Array functions</a>
