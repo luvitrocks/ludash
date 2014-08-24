@@ -40,7 +40,7 @@ p(results)
 
 ## Documentation
 
-The list of functions available inside __ludash__ can be classified into such categories:
+The list of functions available inside _ludash_ can be classified into such categories:
 
 * [Collection functions](#collections)
 * [Array functions](#arrays)
@@ -48,7 +48,7 @@ The list of functions available inside __ludash__ can be classified into such ca
 * [Utility functions](#utilities)
 * [Chaining](#chaining)
 
-**Collection functions** are mostly meant for Lua tables which contains both an array-part and/or a map-part. **Array functions** meant for array lists or sequences. And **object functions** are meant for instances/classes. Also __ludash__ provides a bunch of helpful **utility methods** and **chaining** support.
+**Collection functions** are mostly meant for Lua tables which contains both an array-part and/or a map-part. **Array functions** meant for array lists or sequences. **Object functions** are meant for instances/classes. Also _ludash_ provides a bunch of helpful **utility methods** and **chaining** support.
 
 The HTML version of this doc is available on - http://luvitrocks.github.io/ludash.
 
@@ -56,11 +56,11 @@ The HTML version of this doc is available on - http://luvitrocks.github.io/ludas
 
 ### each(table, iterator)
 
-__Alias: ``forEach``__
+_Alias: `forEach`_
 
 ### map(table, iterator)
 
-__Alias: ``collect``__
+_Alias: `collect`_
 
 **[[⇧]](#documentation)**
 
