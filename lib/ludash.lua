@@ -60,6 +60,26 @@ function lu.filter (t, func)
 	return _r
 end
 
+function lu.contains (t, val)
+
+end
+
+function lu.some (t, func)
+	if lu.isEmpty(t) then return false end
+
+	func = func or lu.identity
+
+	local found = false
+	lu.each(t, function (v, k, l)
+		if not found and func(v, k, l) then
+			found = true
+			return found
+		end
+	end)
+
+	return found
+end
+
 function lu.size(list, ...)
 	local args = {...}
 
@@ -161,6 +181,8 @@ lu.isTable = lu.isObject
 lu.forEach = lu.each
 lu.collect = lu.map
 lu.select = lu.filter
+lu.include = lu.contains
+lu.any = lu.some
 lu.compare = lu.isEqual
 
 return lu

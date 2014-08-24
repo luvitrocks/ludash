@@ -100,6 +100,31 @@ Looks through each value in the **table**, returning an array of all the values 
 _.filter({1, 2, 3, 4, 5, 6}, function (num) return num % 2 == 0 end)
 -- => {2, 4, 6}
 ```
+
+### contains(table, value)
+
+_Alias: `include`_
+
+Returns `true` if the **value** is present in the **table**.
+
+```lua
+_.contains({6, 8, 10, 16}, 8) -- => true
+_.contains({nil, true, 0, true, true}, false) -- => false
+```
+
+### some(table, predicate)
+
+_Alias: `any`_
+
+Returns `true` if any of the values in the **table** pass the **predicate** truth test. Stops traversing the table if a `true` element is found.
+
+```lua
+local function isUpper (value) 
+	return value:upper() == value 
+end
+_.some({'a', 'B', 'c'}, isUpper) -- => true
+```
+
 ### size(...)
 
 When given a table, provides the count for the very number of values in that table.

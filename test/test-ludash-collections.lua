@@ -75,6 +75,20 @@ local newNums = _.map(nums, function (num)
 end)
 equal(newNums, {9, 3, 6})
 
+-- some
+local found = _.some({1, 2, 3, 4, 5}, function (num)
+	return num / 2 == 1
+end)
+local notFound = _.some({1, 2, 3, 4, 5}, function (num)
+	return num * 6 == 36
+end)
+local hasUpper = _.some({'a', 'B', 'c'}, function (letter)
+	return letter:upper() == letter
+end)
+assert(found == true)
+assert(notFound == false)
+assert(hasUpper == true)
+
 -- size
 assert(_.size() == 0)
 assert(_.size(nil) == 0)
