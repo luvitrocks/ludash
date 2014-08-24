@@ -127,14 +127,14 @@ _.some({'a', 'B', 'c'}, isUpper) -- => true
 
 ### size(...)
 
-When given a table, provides the count for the very number of values in that table.
+When given a **table**, provides the count for the very number of values in that table.
 
 ```lua
 _.size({1, 2, 3}) -- => 3
 _.size({one=1, two=2}) -- => 2
 ```
 
-When given a list of arguments, returns the count of these arguments.
+When given a list of **arguments**, returns the count of these arguments.
 
 ```lua
 _.size(1, 2, 3) -- => 3
