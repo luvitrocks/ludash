@@ -10,7 +10,6 @@ function lu.each (t, func)
 	-- http://springrts.com/wiki/Lua_Performance#TEST_9:_for-loops
 	if lu.isArray(t) then
 		local tl = #t
-
 		for i = 1, tl do
 			func(t[i], i, t)
 		end
@@ -124,31 +123,31 @@ function lu.isEmpty (val)
 	return true
 end
 
-function lu.isEqual (objA, objB, useMt)
-	local typeObjA = type(objA)
-	local typeObjB = type(objB)
+function lu.isEqual (tableA, tableB, useMt)
+	local typeTabA = type(tableA)
+	local typeTabB = type(tableB)
 
-	if typeObjA ~= typeObjB then return false end
-	if typeObjA ~= 'table' then return (objA == objB) end
+	if typeTabA ~= typeTabB then return false end
+	if typeTabA ~= 'table' then return (tableA == tableB) end
 
-	local mtA = getmetatable(objA)
-	local mtB = getmetatable(objB)
+	local mtA = getmetatable(tableA)
+	local mtB = getmetatable(tableB)
 
 	if useMt then
 		if (mtA or mtB) and (mtA.__eq or mtB.__eq) then
-			return mtA.__eq(objA, objB) or mtB.__eq(objB, objA) or (objA == objB)
+			return mtA.__eq(tableA, tableB) or mtB.__eq(tableB, tableA) or (tableA == tableB)
 		end
 	end
 
-	if lu.size(objA) ~= lu.size(objB) then return false end
+	if lu.size(tableA) ~= lu.size(tableB) then return false end
 
-	for i, v1 in pairs(objA) do
-		local v2 = objB[i]
+	for i, v1 in pairs(tableA) do
+		local v2 = tableB[i]
 		if lu.isNil(v2) or not lu.isEqual(v1,v2,useMt) then return false end
 	end
 
-	for i, v1 in pairs(objB) do
-		local v2 = objA[i]
+	for i, v1 in pairs(tableB) do
+		local v2 = tableA[i]
 		if lu.isNil(v2) then return false end
 	end
 
