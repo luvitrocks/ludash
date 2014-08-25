@@ -119,7 +119,11 @@ Looks through each value in the **table**, returning an array of all the values 
 
 ```lua
 _.where(listOfPlays, {author="Shakespeare", year=1611})
--- => {{title="Cymbeline", author="Shakespeare", year=1611}, {title="The Tempest", author="Shakespeare", year=1611}}
+-- => 
+-- {
+--  {title="Cymbeline", author="Shakespeare", year=1611}, 
+--  {title="The Tempest", author="Shakespeare", year=1611}
+-- }
 ```
 
 ### every(table, predicate)
