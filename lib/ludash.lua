@@ -11,7 +11,8 @@ function lu.each (t, func)
 	if lu.isArray(t) then
 		local tl = #t
 		for i = 1, tl do
-			func(t[i], i, t)
+			local v = t[i]
+			func(v, i, t)
 		end
 	else
 		for k, v in pairs(t) do
@@ -24,15 +25,15 @@ function lu.map (t, func)
 	local _r = {}
 	local _i = 1
 
-	lu.each(t, function (v, k)
+	lu.each(t, function (v, k, l)
 		if lu.isArray(t) then
-			local val = func(v, k, t)
+			local val = func(v, k, l)
 			if val then
 				_r[k] = val
 				_i = _i + 1
 			end
 		else
-			local val = func(v, k, t)
+			local val = func(v, k, l)
 			table.insert(_r, val)
 		end
 	end)
@@ -54,6 +55,20 @@ function lu.filter (t, func)
 			if func(v, k, t) then
 				table.insert(_r, v)
 			end
+		end
+	end)
+
+	return _r
+end
+
+function lu.find (t, func)
+	if func == nil then return nil end
+
+	local _r = nil
+	lu.any(t, function (v, k, l)
+		if func(v, k, l) then
+			_r = v
+			return true
 		end
 	end)
 
@@ -191,6 +206,7 @@ lu.collect = lu.map
 lu.select = lu.filter
 lu.include = lu.contains
 lu.any = lu.some
+lu.detect = lu.find
 lu.compare = lu.isEqual
 
 return lu

@@ -98,6 +98,21 @@ assert(_.contains({a=1, b=2}, 2) == true)
 assert(_.contains({a='foo', b='bar'}, 'bar') == true)
 assert(_.contains({a='foo', b='bar'}, 'dodo') == false)
 
+-- find
+local even = _.find({1, 2, 3, 4, 5, 6}, function (num)
+	return num % 2 == 0
+end)
+local robert = _.find(people, function (human)
+	return human.name == 'Robert'
+end)
+local gustave = _.find(people, function (human)
+	return human.name == 'Gustave'
+end)
+assert(even == 2)
+assert(robert.name == 'Robert')
+assert(robert.age == 34)
+assert(gustave == nil)
+
 -- size
 assert(_.size() == 0)
 assert(_.size(nil) == 0)
