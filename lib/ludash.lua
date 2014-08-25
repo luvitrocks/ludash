@@ -75,6 +75,32 @@ function lu.find (t, func)
 	return _r
 end
 
+function lu.where (t, props)
+	local found = {}
+
+	return lu.select(t, function (val)
+		return lu.every(props, function(v, k)
+			return val[k] == v
+		end)
+	end)
+end
+
+function lu.every (t, func)
+	if lu.isEmpty(t) then return false end
+
+	func = func or lu.identity
+	if not func then return false end
+
+	local found = true
+	lu.each(t, function(v, k, l)
+		if found and not func(v, k, l) then
+			found = false
+		end
+	end)
+
+	return found
+end
+
 function lu.some (t, func)
 	if lu.isEmpty(t) then return false end
 
@@ -207,6 +233,7 @@ lu.select = lu.filter
 lu.include = lu.contains
 lu.any = lu.some
 lu.detect = lu.find
+lu.all = lu.every
 lu.compare = lu.isEqual
 
 return lu

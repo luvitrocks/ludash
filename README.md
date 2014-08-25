@@ -113,6 +113,26 @@ _.filter({1, 2, 3, 4, 5, 6}, function (num) return num % 2 == 0 end)
 -- => {2, 4, 6}
 ```
 
+### where(table, properties)
+
+Looks through each value in the **table**, returning an array of all the values that contain all of the key-value pairs listed in **properties**.
+
+```lua
+_.where(listOfPlays, {author="Shakespeare", year=1611})
+-- => {{title="Cymbeline", author="Shakespeare", year=1611}, {title="The Tempest", author="Shakespeare", year=1611}}
+```
+
+### every(table, predicate)
+
+_Alias: `all`_
+
+Checks whether or not all elements pass a validation test.
+
+```lua
+_.all({2,4,6}, function (num) return num %2 == 0 end)
+-- => true
+```
+
 ### contains(table, value)
 
 _Alias: `include`_
