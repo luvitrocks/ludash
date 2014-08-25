@@ -1,8 +1,8 @@
 # lλdash
 
-[![NPM version](https://badge.fury.io/js/ludash.svg)](http://badge.fury.io/js/ludash)
+[![NPM version](http://img.shields.io/npm/v/ludash.svg)](http://badge.fury.io/js/ludash)
 [![Build Status](http://img.shields.io/travis/luvitrocks/luvit.svg?style=flat-square)](https://travis-ci.org/luvitrocks/ludash)
-[![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
+[![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 [Luvit.io](http://luvit.io) utility-belt library for functional programming. Provides support for the usual functional suspects (each, map, reduce, filter...) without extending Lua core objects.
 
