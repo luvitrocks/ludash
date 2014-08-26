@@ -247,6 +247,8 @@ end
 lu.isTable = lu.isObject
 lu.forEach = lu.each
 lu.collect = lu.map
+lu.inject = lu.reduce
+lu.foldl = lu.reduce
 lu.select = lu.filter
 lu.include = lu.contains
 lu.any = lu.some
