@@ -105,6 +105,18 @@ local str = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val, index) re
 -- => 'abc'
 ```
 
+### reduceRight(table, iterator)
+
+_Aliases: `_.foldr`_
+
+Similar to `_.reduce`, but performs from right to left.
+
+```lua
+local list = {{0, 1}, {2, 3}, {4, 5}}
+local flat = _.reduceRight(list, function (a, b) return _.concat(a, b) end, {})
+-- => {4, 5, 2, 3, 0, 1}
+```
+
 ### find(table, iterator)
 
 _Alias: `detect`_
