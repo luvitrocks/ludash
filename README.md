@@ -93,7 +93,7 @@ _.map({one=1, two=2, three=3}, function (num) return num * 3 end)
 
 ### reduce(table, iterator)
 
-_Alias: ``_.inject``, ``_.foldl``_
+_Alias: `_.foldl`_
 
 Boils down a list of values into a single table. **Memo** is the initial state of the reduction, and each successive step of it should be returned by **iterator**. The iterator is passed four arguments: the `memo`, then the `value` and `index` (or `key`) of the iteration, and finally a reference to the entire `list`.
 
@@ -107,7 +107,7 @@ local str = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val, index) re
 
 ### reduceRight(table, iterator)
 
-_Alias: ``_.foldr``_
+_Alias: `_.foldr`_
 
 Similar to `_.reduce`, but performs from right to left.
 
