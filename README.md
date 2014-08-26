@@ -98,7 +98,7 @@ _Alias: `_.inject`, `_.foldl`_
 Boils down a list of values into a single table. **Memo** is the initial state of the reduction, and each successive step of it should be returned by **iterator**. The iterator is passed four arguments: the `memo`, then the `value` and `index` (or `key`) of the iteration, and finally a reference to the entire `list`.
 
 ```lua
-local sum = _.reduce({1, 2, 3}, function (memo, num, index) return memo + num end, 0)
+local sum = _.reduce({1, 2, 3}, function (memo, num, index) return memo + num end, 1)
 -- => 6
 
 local str = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val, index) return memo.x .. val.x end)

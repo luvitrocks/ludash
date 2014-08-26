@@ -75,6 +75,24 @@ function lu.find (t, func)
 	return _r
 end
 
+function lu.reduce (t, func, memo)
+	local init = memo == nil
+	lu.each(t, function (v, k, l)
+		if init then
+			memo = v
+			init = false
+		else
+			memo = func(memo, v, k, l)
+		end
+	end)
+
+	if init then
+		error('Reduce of empty array with no initial value')
+	end
+
+	return memo
+end
+
 function lu.where (t, props)
 	local found = {}
 
