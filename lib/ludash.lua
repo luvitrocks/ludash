@@ -23,14 +23,12 @@ end
 
 function lu.map (t, func)
 	local _r = {}
-	local _i = 1
 
 	lu.each(t, function (v, k, l)
 		if lu.isArray(t) then
 			local val = func(v, k, l)
 			if val then
 				_r[k] = val
-				_i = _i + 1
 			end
 		else
 			local val = func(v, k, l)
@@ -176,8 +174,15 @@ function lu.size (list, ...)
 	return 0
 end
 
-function lu.concat (t1, t2)
-	-- body
+function lu.concat (...)
+	local values = lu.flatten({...}, true)
+	local _r = {}
+
+	lu.each(values, function (v, k)
+		_r[k] = v
+	end)
+
+	return _r
 end
 
 function lu.flatten (t, shallow)

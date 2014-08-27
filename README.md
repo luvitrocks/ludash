@@ -113,7 +113,7 @@ Similar to `_.reduce`, but performs from right to left.
 
 ```lua
 local t = {{0, 1}, {2, 3}, {4, 5}}
-local flat = _.reduceRight(t, function (memo, val) return table.concat(memo, val) end, {})
+local flat = _.reduceRight(t, function (memo, val) return _.concat(memo, val) end, {})
 -- => {4, 5, 2, 3, 0, 1}
 ```
 
@@ -224,6 +224,17 @@ Reverses an **array** table order.
 ```lua
 _.reverse({1,2,3,4,5,6})
 -- => {6,5,4,3,2,1}
+```
+
+### concat(...)
+
+Creates a new array by concatenating the **arguments** passed in. It does not alter the original versions of the values passed in.
+
+```lua
+_.concat(1, 2, 3, 4, 5, 6)
+-- => {1,2,3,4,5,6}
+_.concat({1,2,3}, {4,5,6})
+-- => {1,2,3,4,5,6}
 ```
 
 **[[⇧]](#documentation)**
