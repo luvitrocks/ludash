@@ -112,8 +112,8 @@ _Alias: `foldr`_
 Similar to `_.reduce`, but performs from right to left.
 
 ```lua
-local list = {{0, 1}, {2, 3}, {4, 5}}
-local flat = _.reduceRight(list, function (memo, val) return _.concat(memo, val) end, {})
+local t = {{0, 1}, {2, 3}, {4, 5}}
+local flat = _.reduceRight(t, function (memo, val) return table.concat(memo, val) end, {})
 -- => {4, 5, 2, 3, 0, 1}
 ```
 
