@@ -206,9 +206,9 @@ _.size('a', 'b', {}, function () end) -- => 4
 
 ## <a name="arrays">Array functions</a>
 
-### reverse(arr)
+### reverse(array)
 
-Reverses an **array** order.
+Reverses an **array** table order.
 
 ```lua
 _.reverse({1,2,3,4,5,6})
