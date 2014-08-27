@@ -144,13 +144,12 @@ local abc = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val)
 end)
 assert(abc.x == 'abc')
 
--- -- reduceRight
--- local t = {{0, 1}, {2, 3}, {4, 5}}
--- local flat = _.reduceRight(t, function (memo, val)
--- 	p(memo, val)
--- 	-- return table.concat(memo, val)
--- end, {})
--- equal(flat, {4, 5, 2, 3, 0, 1})
+-- reduceRight
+local t = {{0, 1}, {2, 3}, {4, 5}}
+local flat = _.reduceRight(t, function (memo, val)
+	return _.concat(memo, val)
+end, {})
+equal(flat, {4, 5, 2, 3, 0, 1})
 
 -- size
 assert(_.size() == 0)
