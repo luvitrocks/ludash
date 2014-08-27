@@ -136,7 +136,7 @@ assert(_.every({2,4,5}, function (num) return num % 2 == 0 end) == false)
 assert(_.every({a=2,b=4,c=6}, function (val) return val % 2 == 0 end) == true)
 
 -- reduce
-assert(_.reduce({1, 2, 3}, function (memo, val) return memo + val end, 2) == 8)
+assert(_.reduce({1,2,3}, function (memo, val) return memo + val end, 2) == 8)
 assert(_.reduce({a=1, b=2, c=3}, function (memo, val) return memo + val end) == 6)
 local abc = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val)
 	return {x = memo.x .. val.x}

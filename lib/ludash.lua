@@ -75,6 +75,16 @@ function lu.find (t, func)
 	return _r
 end
 
+function lu.reverse (t)
+	local length = lu.size(t)
+
+	for i = 1, length / 2, 1 do
+		t[i], t[length-i+1] = t[length-i+1], t[i]
+	end
+
+	return t
+end
+
 function lu.reduce (t, func, memo)
 	local init = memo == nil
 	lu.each(t, function (v, k, l)
@@ -87,10 +97,14 @@ function lu.reduce (t, func, memo)
 	end)
 
 	if init then
-		error('Reduce of empty array with no initial value')
+		error('Empty array reduce without initial value')
 	end
 
 	return memo
+end
+
+function lu.reduceRight (t, func, memo)
+	-- body
 end
 
 function lu.where (t, props)
@@ -249,6 +263,7 @@ lu.forEach = lu.each
 lu.collect = lu.map
 lu.inject = lu.reduce
 lu.foldl = lu.reduce
+lu.foldr = lu.reduceRight
 lu.select = lu.filter
 lu.include = lu.contains
 lu.any = lu.some
