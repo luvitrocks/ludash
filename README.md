@@ -206,6 +206,17 @@ _.size('a', 'b', {}, function () end) -- => 4
 
 ## <a name="arrays">Array functions</a>
 
+### flatten(array, [shallow])
+
+Flattens a nested **array** (the nesting can be to any depth). If you pass **shallow** flag, the array will only be flattened a single level.
+
+```lua
+_.flatten({1,{2,3},{4,5,{6,7}}}) 
+-- => {1,2,3,4,5,6,7}
+_.flatten({1,{2},{{3}}}, true) 
+-- => {1,{2},{{3}}}
+```
+
 ### reverse(array)
 
 Reverses an **array** table order.
@@ -220,11 +231,11 @@ _.reverse({1,2,3,4,5,6})
 
 ## <a name="objects">Object functions</a>
 
-### isEqual(table1, table2, useMetaTableFlag)
+### isEqual(table1, table2, [useMetaTable])
 
 _Alias: `compare`_
 
-Performs a deep comparison between the two objects, to determine if they should be considered equal. It can compare strings, functions, nil, booleans. Compares tables by reference or by values. If optional `useMetaTableFlag` boolean is passed (default `false`), the equality operator `==` will be used if one of the given objects has a metatable implementing `__eq`.
+Performs a deep comparison between the two objects, to determine if they should be considered equal. It can compare strings, functions, nil, booleans. Compares tables by reference or by values. If optional `useMetaTable` boolean is passed (default `false`), the equality operator `==` will be used if one of the given objects has a metatable implementing `__eq`.
 
 ```lua
 _.isEqual(1, 1) -- => true

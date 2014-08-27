@@ -87,6 +87,7 @@ end
 
 function lu.reduce (t, func, memo)
 	local init = memo == nil
+
 	lu.each(t, function (v, k, l)
 		if init then
 			memo = v
@@ -104,7 +105,7 @@ function lu.reduce (t, func, memo)
 end
 
 function lu.reduceRight (t, func, memo)
-	-- body
+	return lu.reduce(lu.reverse(t), func, memo)
 end
 
 function lu.where (t, props)
@@ -157,7 +158,7 @@ function lu.contains (t, val)
 	end)
 end
 
-function lu.size(list, ...)
+function lu.size (list, ...)
 	local args = {...}
 
 	if not lu.isEmpty(args) then
@@ -173,6 +174,27 @@ function lu.size(list, ...)
 	end
 
 	return 0
+end
+
+function lu.concat (t1, t2)
+	-- body
+end
+
+function lu.flatten (t, shallow)
+	local shallow = shallow or false
+	local new_flattened
+	local _flat = {}
+
+	lu.each(t, function (val, k, l)
+		if lu.isTable(val) then
+			new_flattened = shallow and val or lu.flatten(val)
+			lu.each(new_flattened, function (v) _flat[#_flat+1] = v end)
+		else
+			_flat[#_flat+1] = val
+		end
+	end)
+
+	return _flat
 end
 
 --
@@ -258,17 +280,18 @@ end
 --
 -- Aliases
 --
-lu.isTable = lu.isObject
-lu.forEach = lu.each
-lu.collect = lu.map
-lu.inject = lu.reduce
-lu.foldl = lu.reduce
-lu.foldr = lu.reduceRight
-lu.select = lu.filter
-lu.include = lu.contains
-lu.any = lu.some
-lu.detect = lu.find
-lu.all = lu.every
-lu.compare = lu.isEqual
+lu.isTable	=	lu.isObject
+lu.forEach	=	lu.each
+lu.collect	=	lu.map
+lu.inject	=	lu.reduce
+lu.foldl	=	lu.reduce
+lu.injectr	=	lu.reduceRight
+lu.foldr	=	lu.reduceRight
+lu.select	=	lu.filter
+lu.include	=	lu.contains
+lu.any		=	lu.some
+lu.detect	=	lu.find
+lu.all		=	lu.every
+lu.compare	=	lu.isEqual
 
 return lu
