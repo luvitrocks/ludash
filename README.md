@@ -98,10 +98,10 @@ _Aliases: `inject`, `foldl`_
 Boils down a list of values into a single table. **Memo** is the initial state of the reduction, and each successive step of it should be returned by **iterator**. The iterator is passed four arguments: the `memo`, then the `value` and `index` (or `key`) of the iteration, and finally a reference to the entire `list`.
 
 ```lua
-local sum = _.reduce({1, 2, 3}, function (memo, num, index) return memo + num end, 1)
+local sum = _.reduce({1, 2, 3}, function (memo, val) return memo + val end, 0)
 -- => 6
 
-local str = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val, index) return memo.x .. val.x end)
+local str = _.reduce({{x='a'}, {x='b'}, {x='c'}}, function (memo, val) return memo.x .. val.x end)
 -- => 'abc'
 ```
 
@@ -113,7 +113,7 @@ Similar to `_.reduce`, but performs from right to left.
 
 ```lua
 local list = {{0, 1}, {2, 3}, {4, 5}}
-local flat = _.reduceRight(list, function (a, b) return _.concat(a, b) end, {})
+local flat = _.reduceRight(list, function (memo, val) return _.concat(memo, val) end, {})
 -- => {4, 5, 2, 3, 0, 1}
 ```
 
