@@ -204,9 +204,15 @@ end
 --
 function lu.keys (t)
 	if not lu.isObject(t) then error('Table is not an object') end
-
 	return lu.map(t, function (v, k)
 		return k
+	end)
+end
+
+function lu.values (t)
+	if not lu.isObject(t) then error('Table is not an object') end
+	return lu.map(t, function (v)
+		return v
 	end)
 end
 

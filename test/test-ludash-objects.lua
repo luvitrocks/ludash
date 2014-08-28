@@ -4,6 +4,7 @@ local _ = require('../lib/ludash')
 
 -- keys
 equal(_.keys({one=1, two=2, three=3}), {"one", "two", "three"})
+equal(_.values({one=1, two=2, three=3}), {1, 2, 3})
 
 -- isEmpty
 assert(_.isEmpty({}) == true)
