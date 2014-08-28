@@ -16,3 +16,8 @@ assert(_.uid() == 0)
 assert(_.uid() == 1)
 assert(_.uid('prefix_%s') == 'prefix_2')
 assert(_.uid(function (id) return 'lu'..id..'dash' end) == 'lu3dash')
+
+-- once
+local threeSum = _.once(function (a, b, c) return a + b + c end)
+assert(threeSum(1,2,3) == 6)
+assert(threeSum(4,5,6) == 6)

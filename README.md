@@ -376,6 +376,17 @@ _.times(5, func)
 -- => {'L','u','v','i','t'}
 ```
 
+### once(func)
+
+Produces a **function** that runs only once. Successive calls to this function will still yield the same input.
+
+```lua
+local sq = _.once(function (v) return v * v end)
+sq(1) -- => 1
+sq(2) -- => 1
+sq(3) -- => 1
+```
+
 ### uniqueId([template])
 
 _Alias: `uid`_

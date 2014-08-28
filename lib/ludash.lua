@@ -308,6 +308,19 @@ function lu.times (n, func)
 	return _r
 end
 
+function lu.once (func)
+	local _internal = 0
+	local _args = {}
+
+	return function (...)
+		_internal = _internal+1
+		if _internal <=1 then
+			_args = {...}
+		end
+		return func(unpack(_args))
+	end
+end
+
 --
 -- Aliases
 --
