@@ -260,6 +260,20 @@ _.keys({one=1, two=2, three=3})
 -- => {1, 2, 3}
 ```
 
+### invert(table)
+
+_Alias: `mirror`_
+
+Returns a copy of the **table** where the keys have become the values and the values the keys.
+
+```lua
+_.invert({Moe="Moses", Larry="Louis", Curly="Jerome"})
+-- => {Moses="Moe", Louis="Larry", Jerome="Curly"}
+
+_.invert {'a','b','c'} 
+-- => "{a=1, b=2, c=3}"
+```
+
 ### isEqual(table1, table2, [useMetaTable])
 
 _Alias: `compare`_

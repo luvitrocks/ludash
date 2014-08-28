@@ -73,16 +73,6 @@ function lu.find (t, func)
 	return _r
 end
 
-function lu.reverse (t)
-	local length = lu.size(t)
-
-	for i = 1, length / 2, 1 do
-		t[i], t[length-i+1] = t[length-i+1], t[i]
-	end
-
-	return t
-end
-
 function lu.reduce (t, func, memo)
 	local init = memo == nil
 
@@ -171,6 +161,9 @@ function lu.size (list, ...)
 	return 0
 end
 
+--
+-- Arrays
+--
 function lu.concat (...)
 	local values = lu.flatten({...}, true)
 	local _r = {}
@@ -197,6 +190,22 @@ function lu.flatten (t, shallow)
 	end)
 
 	return _flat
+end
+
+function lu.reverse (t)
+	local length = lu.size(t)
+	for i = 1, length / 2, 1 do
+		t[i], t[length-i+1] = t[length-i+1], t[i]
+	end
+	return t
+end
+
+function lu.invert (t)
+	local _r = {}
+	lu.each(t, function (v, k)
+		_r[k] = v
+	end)
+	return _r
 end
 
 --
@@ -348,14 +357,14 @@ local entityMap = {
 		['/'] = '&#x2F;'
 	}
 }
--- entityMap.unescape = lu.invert(entityMap.escape)
--- function lu.escape (str)
--- 	str = str or ''
--- end
+entityMap.unescape = lu.invert(entityMap.escape)
+function lu.escape (str)
+	str = str or ''
+end
 
--- function lu.unescape (str)
--- 	str = str or ''
--- end
+function lu.unescape (str)
+	str = str or ''
+end
 
 --
 -- Aliases
@@ -374,5 +383,6 @@ lu.detect	=	lu.find
 lu.all		=	lu.every
 lu.compare	=	lu.isEqual
 lu.uid		=	lu.uniqueId
+lu.mirror	=	lu.invert
 
 return lu
