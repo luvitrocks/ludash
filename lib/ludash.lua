@@ -299,6 +299,14 @@ function lu.uniqueId (template)
 	end
 end
 
+function lu.times (n, func)
+	local _r = {}
+	for i = 1, n do
+		_r[i] = func(i)
+	end
+	return _r
+end
+
 --
 -- Aliases
 --

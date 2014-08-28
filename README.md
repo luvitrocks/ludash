@@ -356,6 +356,16 @@ _.isNil({}) -- => false
 
 ## <a name="utilities">Utility functions</a>
 
+### times(n, iterator)
+
+Calls a given **iterator** function `n` times.
+
+```lua
+local func = ('Lua programming'):gmatch('.')
+_.times(3, func) 
+-- => {'L','u','a'}
+```
+
 ### uniqueId([template])
 
 _Alias: `uid`_
