@@ -2,6 +2,9 @@ require('luvit-test/helper')
 
 local _ = require('../lib/ludash')
 
+-- keys
+equal(_.keys({one=1, two=2, three=3}), {"one", "two", "three"})
+
 -- isEmpty
 assert(_.isEmpty({}) == true)
 assert(_.isEmpty('') == true)

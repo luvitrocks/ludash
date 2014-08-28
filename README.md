@@ -242,6 +242,15 @@ _.concat({1,2,3}, {4,5,6})
 
 ## <a name="objects">Object functions</a>
 
+### keys(table)
+
+Retrieve all the names of the **tables**'s properties. The order of the keys is not guaranteed to be consistent.
+
+```lua
+_.keys({one=1, two=2, three=3})
+-- => {"one", "two", "three"}
+```
+
 ### isEqual(table1, table2, [useMetaTable])
 
 _Alias: `compare`_

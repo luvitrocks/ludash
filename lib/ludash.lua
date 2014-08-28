@@ -202,6 +202,14 @@ end
 --
 -- Objects
 --
+function lu.keys (t)
+	if not lu.isObject(t) then error('Table is not an object') end
+
+	return lu.map(t, function (v, k)
+		return k
+	end)
+end
+
 function lu.isArray (val)
 	return type(val) == 'table' and (val[1] or next(val) == nil)
 end
@@ -279,6 +287,9 @@ function lu.isEqual (tableA, tableB, useMt)
 	return true
 end
 
+--
+-- Utility functions
+--
 function lu.identity (value)
 	return value
 end
@@ -320,6 +331,25 @@ function lu.once (func)
 		return func(unpack(_args))
 	end
 end
+
+local entityMap = {
+	escape = {
+		['&'] = '&amp;',
+		['<'] = '&lt;',
+		['>'] = '&gt;',
+		['"'] = '&quot;',
+		["'"] = '&#x27;',
+		['/'] = '&#x2F;'
+	}
+}
+-- entityMap.unescape = lu.invert(entityMap.escape)
+-- function lu.escape (str)
+-- 	str = str or ''
+-- end
+
+-- function lu.unescape (str)
+-- 	str = str or ''
+-- end
 
 --
 -- Aliases
