@@ -356,6 +356,21 @@ _.isNil({}) -- => false
 
 ## <a name="utilities">Utility functions</a>
 
+### uniqueId([template])
+
+_Alias: `uid`_
+
+Generates and returns a globally-unique integer id for the current session. It can handle string **templates** for formatted  output with Lua `string.format` or callback **function** for the same purpose.
+
+```lua
+_.uniqueId('id%s') 
+-- => 'id2'
+
+local function formatter (id) return '$'..id..'$' end
+_.uniqueId(formatter) 
+-- => '$id1$'
+```
+
 **[[⇧]](#documentation)**
 
 

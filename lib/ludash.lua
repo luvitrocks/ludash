@@ -282,6 +282,23 @@ function lu.isEqual (tableA, tableB, useMt)
 	return true
 end
 
+local unique_id_counter = -1
+function lu.uniqueId (template)
+	unique_id_counter = unique_id_counter + 1
+
+	if not template then
+		return unique_id_counter
+	end
+
+	if lu.isString(template) then
+		return template:format(unique_id_counter)
+	end
+
+	if lu.isFunction(template) then
+		return template(unique_id_counter)
+	end
+end
+
 --
 -- Aliases
 --
@@ -298,5 +315,6 @@ lu.any		=	lu.some
 lu.detect	=	lu.find
 lu.all		=	lu.every
 lu.compare	=	lu.isEqual
+lu.uid		=	lu.uniqueId
 
 return lu
