@@ -358,7 +358,7 @@ _.isNil({}) -- => false
 
 ### identity(value)
 
-Returns the same value that is used as the argument. In math: `f(x) = x`. This function is used as default iterator inside _ludash_.
+Returns the same **value** that is used as the argument. In math: `f(x) = x`. This function is used as default iterator inside _ludash_.
 
 ```lua
 local moe = {name='moe'}
@@ -371,9 +371,9 @@ _.identity(moe);
 Calls a given **iterator** function `n` times.
 
 ```lua
-local func = ('Lua programming'):gmatch('.')
-_.times(3, func) 
--- => {'L','u','a'}
+local func = ('Luvit programming'):gmatch('.')
+_.times(5, func) 
+-- => {'L','u','v','i','t'}
 ```
 
 ### uniqueId([template])
