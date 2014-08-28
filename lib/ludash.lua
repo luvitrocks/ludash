@@ -120,7 +120,6 @@ function lu.every (t, func)
 	if lu.isEmpty(t) then return false end
 
 	func = func or lu.identity
-	if not func then return false end
 
 	local found = true
 	lu.each(t, function(v, k, l)
@@ -136,8 +135,6 @@ function lu.some (t, func)
 	if lu.isEmpty(t) then return false end
 
 	func = func or lu.identity
-
-	if not func then return false end
 
 	local found = false
 	lu.each(t, function (v, k, l)
@@ -280,6 +277,10 @@ function lu.isEqual (tableA, tableB, useMt)
 	end
 
 	return true
+end
+
+function lu.identity (value)
+	return value
 end
 
 local unique_id_counter = -1

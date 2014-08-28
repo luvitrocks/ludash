@@ -356,6 +356,16 @@ _.isNil({}) -- => false
 
 ## <a name="utilities">Utility functions</a>
 
+### identity(value)
+
+Returns the same value that is used as the argument. In math: `f(x) = x`. This function is used as default iterator inside _ludash_.
+
+```lua
+local moe = {name='moe'}
+_.identity(moe);
+-- => {name='moe'}
+```
+
 ### times(n, iterator)
 
 Calls a given **iterator** function `n` times.

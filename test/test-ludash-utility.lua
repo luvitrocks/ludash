@@ -2,6 +2,10 @@ require('luvit-test/helper')
 
 local _ = require('../lib/ludash')
 
+-- identity
+assert(_.identity(1) == 1)
+assert(_.identity('abc') == 'abc')
+
 -- times
 local func = ('Lua programming'):gmatch('.')
 local splitted = _.times(5, func)

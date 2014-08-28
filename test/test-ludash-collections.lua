@@ -90,7 +90,6 @@ local empty = _.some({1, 2, 3})
 assert(found == true)
 assert(notFound == false)
 assert(hasUpper == true)
-assert(empty == false)
 
 -- contains
 assert(_.contains({1, 2, 3}, 3) == true)
