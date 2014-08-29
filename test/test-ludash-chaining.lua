@@ -29,3 +29,5 @@ assert(youngest[1].name == 'Robert')
 assert(youngest[1].age == 24)
 assert(youngest[2].name == 'Aurora')
 assert(youngest[2].age == 24)
+
+equal(_({1, 2, 3}):value(), {1, 2, 3})

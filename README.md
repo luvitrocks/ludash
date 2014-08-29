@@ -459,11 +459,36 @@ _.functions(lu)
 
 **[[⇧]](#documentation)**
 
-
 ## <a name="chaining">Chaining</a>
 
-**[[⇧]](#documentation)**
+You can use _ludash_ **method chaining** (also known as _name parameter idiom_) which is a technique for invoking consecutively method calls in object-oriented style. Each method returns an object, and methods calls are chained together.
 
+### chain(value)
+
+Returns a wrapped table. Calling methods on this table will continue to return wrapped tables until `:value()` is used to unwrap a chained object.
+
+For convenience, you can also use `_(value)` to start chaining methods, instead of `_.chain(value)`.
+
+```lua
+local stooges = {{name='curly', age=25}, {name='moe', age=21}, {name='larry', age=23}}
+local youngest = _.chain(stooges)
+	:sortBy(function (stooge) return stooge.age end)
+	:map(function (stooge) return stooge.name .. ' is ' .. stooge.age end)
+	:first()
+	:value()
+-- => "moe is 21"
+```
+
+### value()
+
+Extracts the value of a wrapped chained object.
+
+```lua
+_({1, 2, 3}):value();
+-- => {1, 2, 3}
+```
+
+**[[⇧]](#documentation)**
 
 ## References
 
