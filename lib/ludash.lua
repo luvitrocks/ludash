@@ -161,6 +161,11 @@ function lu.size (list, ...)
 	return 0
 end
 
+function lu.sort (t, func)
+	table.sort(t, func)
+	return t
+end
+
 --
 -- Arrays
 --
@@ -384,5 +389,15 @@ lu.all		=	lu.every
 lu.compare	=	lu.isEqual
 lu.uid		=	lu.uniqueId
 lu.mirror	=	lu.invert
+
+function lu.chain (val)
+	return lu(val).chain()
+end
+
+setmetatable(lu, {
+	__call = function (t, ...)
+
+	end
+})
 
 return lu
