@@ -446,8 +446,16 @@ _.uniqueId(formatter)
 -- => '$id1$'
 ```
 
-### functions(table)
+### functions(table, [recurseMetaTable])
 
+_Alias: `methods`_
+
+Returns a sorted array of the names of every method in a **table**. If `recurseMetaTable` flag is provided (default `false`) and if the given object has a metatable implementing an `__index` field pointing to another table, will also recurse on this table.
+
+```lua
+_.functions(lu)
+-- => {"all", "any", "bind", "bindAll", "clone", "compact", "compose" ... }
+```
 
 **[[⇧]](#documentation)**
 

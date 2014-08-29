@@ -352,6 +352,30 @@ function lu.once (func)
 	end
 end
 
+function lu.functions (t, recurseMetaTable)
+	t = t or lu
+	local _r = {}
+
+	lu.each(t,function (v, k)
+		if lu.isFunction(v) then
+			_r[#_r+1] = k
+		end
+	end)
+
+	if recurseMetaTable then
+		local mt = getmetatable(t)
+
+		if mt and mt.__index then
+			local mt_methods = lu.functions(mt.__index)
+			lu.each(mt_methods, function (fn)
+				_r[#_r+1] = fn
+			end)
+		end
+	end
+
+	return lu.sort(_r)
+end
+
 local entityMap = {
 	escape = {
 		['&'] = '&amp;',
@@ -389,7 +413,11 @@ lu.all		=	lu.every
 lu.compare	=	lu.isEqual
 lu.uid		=	lu.uniqueId
 lu.mirror	=	lu.invert
+lu.methods	=	lu.functions
 
+--
+-- Chaining
+--
 function lu.chain (val)
 	return lu(val).chain()
 end

@@ -1,5 +1,6 @@
 require('luvit-test/helper')
 
+local co = require('coroutine')
 local _ = require('../lib/ludash')
 
 -- identity
@@ -21,3 +22,6 @@ assert(_.uid(function (id) return 'lu'..id..'dash' end) == 'lu3dash')
 local threeSum = _.once(function (a, b, c) return a + b + c end)
 assert(threeSum(1,2,3) == 6)
 assert(threeSum(4,5,6) == 6)
+
+-- functions
+equal(_.functions(co), {'create','resume','running','status','wrap','yield'})
