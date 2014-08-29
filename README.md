@@ -202,6 +202,18 @@ _.size(1, 2, 3) -- => 3
 _.size('a', 'b', {}, function () end) -- => 4
 ```
 
+### sort(table, [comparator])
+
+Sorts a **table** and relies on Lua's native `table.sort`. Handles custom comparison functions.
+
+```lua
+_.sort({'b','a','d','c'}) 
+-- => "{'a','b','c','d'}"
+
+_.sort({'b','a','d','c'}, function (a,b) return a:byte() > b:byte() end) 
+-- => "{'d','c','b','a'}"
+```
+
 **[[⇧]](#documentation)**
 
 ## <a name="arrays">Array functions</a>
@@ -433,6 +445,9 @@ local function formatter (id) return '$'..id..'$' end
 _.uniqueId(formatter) 
 -- => '$id1$'
 ```
+
+### functions(table)
+
 
 **[[⇧]](#documentation)**
 
