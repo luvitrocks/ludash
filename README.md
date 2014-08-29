@@ -282,7 +282,7 @@ Returns a copy of the **table** where the keys have become the values and the va
 _.invert({Moe="Moses", Larry="Louis", Curly="Jerome"})
 -- => {Moses="Moe", Louis="Larry", Jerome="Curly"}
 
-_.invert {'a','b','c'} 
+_.invert({'a','b','c'})
 -- => "{a=1, b=2, c=3}"
 ```
 
