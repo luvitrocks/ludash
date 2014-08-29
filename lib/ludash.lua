@@ -422,9 +422,38 @@ function lu.chain (val)
 	return lu(val).chain()
 end
 
+local chainable_lu = {}
+lu.each(lu.functions(lu), function (name)
+	local func = lu[name]
+	lu[name] = func
+
+	chainable_lu[name] = function (t, ...)
+		local r = func(t._wrapped, ...)
+		if lu.isObject(t) and t._chain then
+			return lu(r).chain()
+		else
+			return r
+		end
+	end
+end)
+
 setmetatable(lu, {
 	__call = function (t, ...)
+		local wrapped = ...
+		if lu.isTable(wrapped) and wrapped._wrapped then
+			return wrapped
+		end
 
+		local instance = setmetatable({}, { __index = chainable_lu })
+		function instance.chain ()
+			instance._chain = true
+			return instance
+		end
+		function instance.value ()
+			return instance._wrapped
+		end
+		instance._wrapped = wrapped
+		return instance
 	end
 })
 
