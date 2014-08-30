@@ -214,6 +214,18 @@ _.sort({'b','a','d','c'}, function (a,b) return a:byte() > b:byte() end)
 -- => "{'d','c','b','a'}"
 ```
 
+### sortBy(table, [iterator])
+
+Returns a sorted copy of table, ranked in ascending order by the results of running each value through **iterator**. Iterator may also be the string name of the property to sort by.
+
+```lua
+_.sortBy({1, 2, 3, 4, 5, 6}, function (num) return math.sin(num) end)
+-- => {5, 4, 6, 3, 1, 2}
+
+_.sortBy({{name='curly', age=25}, {name='moe', age=21}, {name='larry', age=23}}, 'name')
+-- => {{ name = "curly", age = 25 }, { name = "larry", age = 23 }, { name = "moe", age = 21 }}
+```
+
 **[[⇧]](#documentation)**
 
 ## <a name="arrays">Array functions</a>
@@ -472,7 +484,7 @@ For convenience, you can also use `_(value)` to start chaining methods, instead 
 ```lua
 local stooges = {{name='curly', age=25}, {name='moe', age=21}, {name='larry', age=23}}
 local youngest = _.chain(stooges)
-	:sortBy(function (stooge) return stooge.age end)
+	:sort(function (stooge) return stooge.age end)
 	:map(function (stooge) return stooge.name .. ' is ' .. stooge.age end)
 	:first()
 	:value()
