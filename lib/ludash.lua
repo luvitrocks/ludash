@@ -166,6 +166,26 @@ function lu.sort (t, func)
 	return t
 end
 
+function lu.sortBy (t, func)
+	func = func or lu.identity
+
+	local sorting
+	if lu.isString(func) then
+		sorting = function (a, b)
+			return a[func] < b[func]
+		end
+	else
+		sorting = function (a, b)
+			if a == nil then return false end
+			if b == nil then return true end
+			return func(a) < func(b)
+		end
+	end
+
+	table.sort(t, sorting)
+	return t
+end
+
 --
 -- Arrays
 --

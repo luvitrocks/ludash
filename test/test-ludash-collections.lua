@@ -160,3 +160,11 @@ assert(_.size('a','b', {}, function() end) == 4)
 -- sort
 equal(_.sort({'b','a','d','c'}), {'a','b','c','d'})
 equal(_.sort({'b','a','d','c'}, function (a, b) return a:byte() > b:byte() end, {'d','c','b','a'}))
+
+-- sortBy
+equal(_.sortBy(people, 'name'), {
+	{ name = "Aurora", age = 34 },
+	{ name = "Jekyll", age = 36 },
+	{ name = "Robert", age = 34 },
+	{ name = "Simona", age = 40 }
+})
