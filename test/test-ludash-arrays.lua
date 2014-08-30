@@ -16,3 +16,6 @@ equal(_.concat(1, 'a', 2, 'b', 3, true), {1,'a',2,'b',3,true})
 -- invert
 equal(_.invert({Moe="Moses", Larry="Louis", Curly="Jerome"}), {Moses="Moe", Louis="Larry", Jerome="Curly"})
 equal(_.invert({'a','b','c'}), {a=1, b=2, c=3})
+
+-- push
+equal(_.push({1,2,3}, 4,5,6), {1,2,3,4,5,6})

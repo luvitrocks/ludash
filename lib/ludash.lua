@@ -233,6 +233,13 @@ function lu.invert (t)
 	return _r
 end
 
+function lu.push(t, ...)
+	lu.each({...}, function (v, k)
+		t[#t+1] = v
+	end)
+	return t
+end
+
 --
 -- Objects
 --

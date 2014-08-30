@@ -261,6 +261,17 @@ _.concat({1,2,3}, {4,5,6})
 -- => {1,2,3,4,5,6}
 ```
 
+### push(array, [elements])
+
+Adds the list of **elements** on to the end of an **array**.
+
+```lua
+local array = {1,2,3}
+_.push(array, 4,5,6)
+p(array)
+-- => {1,2,3,4,5,6}
+```
+
 **[[⇧]](#documentation)**
 
 
