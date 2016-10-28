@@ -1,1 +1,5 @@
-require('luvit-test/runner').run(__dirname)
+require('./test-ludash-arrays')
+-- require('./test-ludash-chaining')
+-- require('./test-ludash-collections')
+-- require('./test-ludash-objects')
+-- require('./test-ludash-utility')
