@@ -1,1 +1,1 @@
-return require('lib/ludash')
+return require('./lib/ludash')
