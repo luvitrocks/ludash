@@ -1,6 +1,6 @@
 return {
   name = 'voronianski/ludash',
-  version = '1.0.0',
+  version = '1.0.1',
   description = 'lλdash - Luvit.io functional programming helper library',
   repository = {
     url = 'http://github.com/luvitrocks/ludash.git',
